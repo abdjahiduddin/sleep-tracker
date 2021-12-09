@@ -13,7 +13,7 @@ exports.mapListTime = (rawData) => {
       const endTmp = new Date(item.end.toUTCString())
 
       console.log(typeof item.start," ", item.start)
-      const strDate =  "-"+item.start+"-"
+      const strDate =  item.start.toISOString()
       console.log(typeof strDate, " ",strDate)
 
       // const dateA = new Date("2021-05-06T13:33:00.000Z")
