@@ -16,7 +16,7 @@ exports.mapListTime = (rawData) => {
       console.log(dateA.toUTCString())
       let dateB = new Date(dateA.toUTCString());
       console.log('Given IST datetime: ' + dateB);
-      let usaTime = date.toLocaleString("nl-NL", {timeZone: "Asia/Makassar" });
+      let usaTime = dateB.toLocaleString("nl-NL", {timeZone: "Asia/Makassar" });
       console.log('USA datetime: ' + usaTime);
       
       const start = startTmp.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")
