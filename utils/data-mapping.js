@@ -12,6 +12,9 @@ exports.mapListTime = (rawData) => {
       const startTmp = new Date(item.start.toUTCString())
       const endTmp = new Date(item.end.toUTCString())
 
+      console.log(item.start.toUTCString())
+      console.log(item.end.toUTCString())
+
       console.log(startTmp)
       console.log(endTmp)
 
