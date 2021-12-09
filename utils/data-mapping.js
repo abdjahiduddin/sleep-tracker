@@ -13,10 +13,9 @@ exports.mapListTime = (rawData) => {
       const endTmp = new Date(item.end.toUTCString())
 
       console.log(item.start.toUTCString())
+      console.log(new Date(item.start.toUTCString()))
       console.log(item.end.toUTCString())
-
-      console.log(startTmp)
-      console.log(endTmp)
+      console.log(new Date(item.end.toUTCString()))
 
       const start = startTmp.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")
       console.log(start)
