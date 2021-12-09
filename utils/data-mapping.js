@@ -9,12 +9,17 @@ exports.mapListTime = (rawData) => {
     const dataTable = []
     const dataChart = []
     for (const item of rawData) {
-      const startTmp = new Date(item.start.toUTCString())
-      const endTmp = new Date(item.end.toUTCString())
+      const startIsoStr = item.start.toISOString()
+      const endIsoStr = item.end.toISOString()
 
-      console.log(typeof item.start," ", item.start)
-      const strDate =  item.start.toISOString()
-      console.log(typeof strDate, " ",strDate)
+      const startNew = new Date(startIsoStr)
+      const endNew = new Date(endIsoStr)
+      console.log(startNew)
+      console.log(startNew.toUTCString())
+
+      const startTmp = new Date(startNew.toUTCString())
+      const endTmp = new Date(endNew.toUTCString())
+      console.log(startTmp)
 
       // const dateA = new Date("2021-05-06T13:33:00.000Z")
       // console.log(dateA.toUTCString())
