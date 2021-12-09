@@ -15,6 +15,7 @@ exports.mapListTime = (rawData) => {
       console.log(typeof item.start," ", item.start)
       const strDate =  ""+item.start
       console.log(typeof strDate, " ",strDate)
+      console.log(new Date(strDate).toLocaleString("nl-NL", { timezone: item.timezone }))
 
       // const dateA = new Date("2021-05-06T13:33:00.000Z")
       // console.log(dateA.toUTCString())
