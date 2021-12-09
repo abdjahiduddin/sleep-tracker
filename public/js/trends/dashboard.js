@@ -84,10 +84,10 @@ document
       sleep: sleepTime,
       wakeUp: wakeUpTime,
       tz: timezone,
-      entryId: editId,
+      entryId: editId.value,
     };
 
-    try {
+    // try {
       const respon = await fetch(HOST_BACKEND + "/sleep/entry", {
         method: "PUT",
         headers: {
@@ -115,9 +115,9 @@ document
       } else if (respon.status !== 200) {
         showInfoModal("Error", result.message);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    // } catch (error) {
+    //   console.log(error);
+    // }
   });
 
 document.getElementById("latest").addEventListener("click", async (event) => {
@@ -156,7 +156,7 @@ document.getElementById("logout").addEventListener("click", async (event) => {
       },
     });
 
-    const result = respon.json();
+    const result = await respon.json();
 
     jwt = "";
     userId = "";

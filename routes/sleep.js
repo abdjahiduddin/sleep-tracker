@@ -54,7 +54,8 @@ routes
         .isEmpty()
         .withMessage("Wake up time should not empty"),
     ],
-    isAuth
+    isAuth,
+    sleepController.updateEntry
   );
 
 routes.delete("/entry/:entryId", isAuth, sleepController.deleteEntry);

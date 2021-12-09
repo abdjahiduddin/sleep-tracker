@@ -151,6 +151,7 @@ exports.insertEntry = async (req, res, next) => {
 
 exports.updateEntry = async (req, res, next) => {
   const userId = req.userId;
+  console.log(userId)
   if (!userId) {
     const err = new Error("Not authorized");
     err.statusCode = 401;
@@ -167,7 +168,7 @@ exports.updateEntry = async (req, res, next) => {
     return next(err);
   }
 
-  
+  console.log("Validation success")
   try {
     const entryId = req.body.entryId;
     const sleep = req.body.sleep;

@@ -174,6 +174,8 @@ exports.logout = async (req, res, next) => {
         message: "Credential not found",
       });
     }
+    
+    setRefreshTokenCookie(res, "", new Date(Date.now()))
     res.clearCookie("refreshToken");
     
     const user = await User.findOne({ refreshToken:  refreshTokenCookie})
