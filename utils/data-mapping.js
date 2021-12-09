@@ -9,24 +9,24 @@ exports.mapListTime = (rawData) => {
   const dataTable = [];
   const dataChart = [];
   for (const item of rawData) {
-    const startB = item.start
-    let startIsoStr = startB.toISOString();
+    // const startB = item.start
+    // let startIsoStr = startB.toISOString();
 
-    const startNew = new Date(startIsoStr);
-    console.log(startNew);
-    console.log(startNew.toUTCString());
+    // const startNew = new Date(startIsoStr);
+    // console.log(startNew);
+    // console.log(startNew.toUTCString());
 
-    const startTmp = new Date(startNew.toUTCString());
-    console.log(startTmp);
+    // const startTmp = new Date(startNew.toUTCString());
+    // console.log(startTmp);
 
-    const startA = startTmp.toLocaleString("nl-NL", {
-      timeZone: "Asia/Makassar",
-    });
-    console.log(startA);
+    // const startA = startTmp.toLocaleString("nl-NL", {
+    //   timeZone: "Asia/Makassar",
+    // });
+    // console.log(startA);
 
-    const start = item.start
-      .toLocaleString("nl-NL", { timezone: item.timezone })
-      .split(" ");
+    // const start = item.start
+    //   .toLocaleString("nl-NL", { timeZone: item.timezone })
+    //   .split(" ");
 
     //   Mapping chart data
     // const x = start[0].replace(/\//g, "-").replace(",", "")
@@ -43,7 +43,7 @@ exports.mapListTime = (rawData) => {
     const date = start[0];
     const sleepTime = start[1];
     const wakeUpTime = item.end
-      .toLocaleString("nl-NL", { timezone: item.timezone })
+      .toLocaleString("nl-NL", { timeZone: item.timezone })
       .split(" ")[1];
 
     let seconds = item.duration.seconds.toString();
