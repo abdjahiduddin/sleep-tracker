@@ -24,9 +24,10 @@ document.getElementById("login").addEventListener("submit", (event) => {
     .then((respon) => {
       if (respon.status === 200) {
         window.location.href = HOST_FRONTEND + "/dashboard";
+      } else {
+        const div_failed = document.getElementById("login-failed");
+        div_failed.style.display = "block";
       }
-      const div_failed = document.getElementById("login-failed");
-      div_failed.style.display = "block";
     })
     .catch((error) => {
       console.log(error);

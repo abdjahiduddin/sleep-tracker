@@ -10,6 +10,7 @@ exports.mapListTime = (rawData) => {
     const dataChart = []
     for (const item of rawData) {
       const start = item.start.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")
+      console.log(start)
       
       //   Mapping chart data
       // const x = start[0].replace(/\//g, "-").replace(",", "")
@@ -26,6 +27,7 @@ exports.mapListTime = (rawData) => {
       const date = start[0]
       const sleepTime = start[1]
       const wakeUpTime = item.end.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")[1]
+      console.log(item.end.toLocaleString("nl-NL", { timezone: item.timezone }).split(" "))
 
       console.log()
   
