@@ -9,8 +9,8 @@ exports.mapListTime = (rawData) => {
     const dataTable = []
     const dataChart = []
     for (const item of rawData) {
-      const startTmp = new Date(item.start.toUTCString())
-      const endTmp = new Date(item.end.toUTCString())
+      const startTmp = new Date(new Date(item.start).toUTCString())
+      const endTmp = new Date(new Date(item.end).toUTCString())
 
       console.log(startTmp)
       console.log(endTmp)
