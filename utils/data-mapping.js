@@ -12,12 +12,16 @@ exports.mapListTime = (rawData) => {
       const startTmp = new Date(item.start.toUTCString())
       const endTmp = new Date(item.end.toUTCString())
 
-      const dateA = new Date("2021-05-06T13:33:00.000Z")
-      console.log(dateA.toUTCString())
-      let dateB = new Date(dateA.toUTCString());
-      console.log('Given IST datetime: ' + dateB);
-      let usaTime = dateB.toLocaleString("nl-NL", {timeZone: "Asia/Makassar" });
-      console.log('USA datetime: ' + usaTime);
+      console.log(typeof item.start," ", item.start)
+      const strDate =  String(item.start)
+      console.log(typeof strDate, " ",strDate)
+
+      // const dateA = new Date("2021-05-06T13:33:00.000Z")
+      // console.log(dateA.toUTCString())
+      // let dateB = new Date(dateA.toUTCString());
+      // console.log('Given IST datetime: ' + dateB);
+      // let usaTime = dateB.toLocaleString("nl-NL", {timeZone: "Asia/Makassar" });
+      // console.log('USA datetime: ' + usaTime);
       
       const start = startTmp.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")
       console.log(start)
