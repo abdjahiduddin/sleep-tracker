@@ -20,7 +20,7 @@ app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
-      "script-src-attr": ["'self'", "https://simple-sleep-tracker.herokuapp.com/"],
+      "script-src-attr": ["'self'", "'unsafe-inline'", "https://simple-sleep-tracker.herokuapp.com/"],
     },
   })
 );
