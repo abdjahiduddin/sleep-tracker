@@ -10,7 +10,7 @@ exports.mapListTime = (rawData) => {
     const dataChart = []
     for (const item of rawData) {
       const start = item.start.toLocaleString("nl-NL", { timezone: "Asia/Makassar" }).split(" ")
-      console.log(start)
+      console.log(item.start)
       
       //   Mapping chart data
       // const x = start[0].replace(/\//g, "-").replace(",", "")
