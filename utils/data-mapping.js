@@ -12,10 +12,8 @@ exports.mapListTime = (rawData) => {
       const startTmp = new Date(item.start.toUTCString())
       const endTmp = new Date(item.end.toUTCString())
 
-      console.log(item.start.toUTCString())
-      console.log(new Date(item.start.toUTCString()))
-      console.log(item.end.toUTCString())
-      console.log(new Date(item.end.toUTCString()))
+      console.log("Date.UTC : ",new Date(Date.UTC(2021,12,10,14,47,0)))
+      console.log("Locale string : ",new Date(Date.UTC(2021,12,10,14,47,0)).toLocaleString("id-ID", { timezone: item.timezone }))
 
       const start = startTmp.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")
       console.log(start)
