@@ -1,97 +1,95 @@
 exports.mapListTime = (rawData) => {
-    const wakeUpList = [];
-    const sleepList = [];
-    const durationList = [];
-  
-    let sleepLessSix = 0;
-    let sleepMoreEight = 0;
-  
-    const dataTable = []
-    const dataChart = []
-    for (const item of rawData) {
-      const startIsoStr = item.start.toISOString()
-      const endIsoStr = item.end.toISOString()
+  const wakeUpList = [];
+  const sleepList = [];
+  const durationList = [];
 
-      const startNew = new Date(startIsoStr)
-      const endNew = new Date(endIsoStr)
-      console.log(startNew)
-      console.log(startNew.toUTCString())
+  let sleepLessSix = 0;
+  let sleepMoreEight = 0;
 
-      const startTmp = new Date(startNew.toUTCString())
-      const endTmp = new Date(endNew.toUTCString())
-      console.log(startTmp)
+  const dataTable = [];
+  const dataChart = [];
+  for (const item of rawData) {
+    const startB = item.start
+    let startIsoStr = startB.toISOString();
 
-      // const dateA = new Date("2021-05-06T13:33:00.000Z")
-      // console.log(dateA.toUTCString())
-      // let dateB = new Date(dateA.toUTCString());
-      // console.log('Given IST datetime: ' + dateB);
-      // let usaTime = dateB.toLocaleString("nl-NL", {timeZone: "Asia/Makassar" });
-      // console.log('USA datetime: ' + usaTime);
-      
-      const start = startTmp.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")
-      console.log(start)
+    const startNew = new Date(startIsoStr);
+    console.log(startNew);
+    console.log(startNew.toUTCString());
 
-      //   Mapping chart data
-      // const x = start[0].replace(/\//g, "-").replace(",", "")
-      const dateTmp = start[0].split("-")
-      const x = dateTmp[1] + "-" + dateTmp[0] + "-" + dateTmp[2] 
-      const y = item.duration.hour
-      dataChart.push({
-          x: x,
-          y: y
-      })
-  
-      // Mapping table list
-      // const date = start[0].replace(/\//g, "-").replace(",", "")
-      const date = start[0]
-      const sleepTime = start[1]
-      const wakeUpTime = endTmp.toLocaleString("nl-NL", { timezone: item.timezone }).split(" ")[1]
-      console.log(endTmp.toLocaleString("nl-NL", { timezone: item.timezone }).split(" "))
-  
-      let seconds = item.duration.seconds.toString();
-      let minute = item.duration.minute.toString();
-      let hour = item.duration.hour.toString();
-  
-      const duration =
-        hour.padStart(2, "0") +
-        ":" +
-        minute.padStart(2, "0") +
-        ":" +
-        seconds.padStart(2, "0");
-  
-        dataTable.push({
-            dataId: item._id.toString(),
-            date: date,
-            sleep: sleepTime,
-            wakeUp: wakeUpTime,
-            duration: duration
-        })
-      
-      // Mapping wakeup sleep duration
-      wakeUpList.push(wakeUpTime)
-      sleepList.push(sleepTime)
-      durationList.push(duration)
-  
-      // Mapping less 6 and more 8
-      if(item.duration.hour < 6) {
-          sleepLessSix++
-      }
-  
-      if(item.duration.hour >= 8) {
-          sleepMoreEight++
-      }
+    const startTmp = new Date(startNew.toUTCString());
+    console.log(startTmp);
+
+    const startA = startTmp.toLocaleString("nl-NL", {
+      timeZone: "Asia/Makassar",
+    });
+    console.log(startA);
+
+    const start = item.start
+      .toLocaleString("nl-NL", { timezone: item.timezone })
+      .split(" ");
+
+    //   Mapping chart data
+    // const x = start[0].replace(/\//g, "-").replace(",", "")
+    const dateTmp = start[0].split("-");
+    const x = dateTmp[1] + "-" + dateTmp[0] + "-" + dateTmp[2];
+    const y = item.duration.hour;
+    dataChart.push({
+      x: x,
+      y: y,
+    });
+
+    // Mapping table list
+    // const date = start[0].replace(/\//g, "-").replace(",", "")
+    const date = start[0];
+    const sleepTime = start[1];
+    const wakeUpTime = item.end
+      .toLocaleString("nl-NL", { timezone: item.timezone })
+      .split(" ")[1];
+
+    let seconds = item.duration.seconds.toString();
+    let minute = item.duration.minute.toString();
+    let hour = item.duration.hour.toString();
+
+    const duration =
+      hour.padStart(2, "0") +
+      ":" +
+      minute.padStart(2, "0") +
+      ":" +
+      seconds.padStart(2, "0");
+
+    dataTable.push({
+      dataId: item._id.toString(),
+      date: date,
+      sleep: sleepTime,
+      wakeUp: wakeUpTime,
+      duration: duration,
+    });
+
+    // Mapping wakeup sleep duration
+    wakeUpList.push(wakeUpTime);
+    sleepList.push(sleepTime);
+    durationList.push(duration);
+
+    // Mapping less 6 and more 8
+    if (item.duration.hour < 6) {
+      sleepLessSix++;
     }
-    
-    return {
-        dataChart: dataChart,
-        dataTable: dataTable,
-        sleepLessSix: sleepLessSix,
-        sleepMoreEight: sleepMoreEight,
-        wakeUpList: wakeUpList,
-        sleepList: sleepList,
-        durationList: durationList
+
+    if (item.duration.hour >= 8) {
+      sleepMoreEight++;
     }
+  }
+
+  return {
+    dataChart: dataChart,
+    dataTable: dataTable,
+    sleepLessSix: sleepLessSix,
+    sleepMoreEight: sleepMoreEight,
+    wakeUpList: wakeUpList,
+    sleepList: sleepList,
+    durationList: durationList,
   };
+};
 // exports.mapDataChart = (rawData) => {
 //   return rawData.map((item) => {
 //     const x = item.start
