@@ -121,8 +121,11 @@ exports.insertEntry = async (req, res, next) => {
     const wakeUp = req.body.wakeUp;
     const tz = req.body.tz;
 
-    const sleepTime = new Date(sleep);
-    const wakeUpTime = new Date(wakeUp);
+    const sleepTmp = new Date(sleep)
+    const wakeUpTmp = new Date(wakeUp)
+
+    const sleepTime = new Date(sleepTmp.toLocaleString("nl-NL", { timezone: tz }));
+    const wakeUpTime = new Date(wakeUpTmp.toLocaleString("nl-NL", { timezone: tz }));
 
     const diff = wakeUpTime - sleepTime;
     const duration = TimeCalc.milisecondsToTime(diff);
