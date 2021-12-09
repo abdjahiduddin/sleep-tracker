@@ -16,7 +16,14 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src-attr": ["'self'", "https://simple-sleep-tracker.herokuapp.com/"],
+    },
+  })
+);
 app.use(compression());
 
 app.use((req, res, next) => {
