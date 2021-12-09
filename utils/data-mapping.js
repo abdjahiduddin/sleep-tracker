@@ -24,9 +24,9 @@ exports.mapListTime = (rawData) => {
     // });
     // console.log(startA);
 
-    // const start = item.start
-    //   .toLocaleString("nl-NL", { timeZone: item.timezone })
-    //   .split(" ");
+    const start = item.start
+      .toLocaleString("nl-NL", { timeZone: item.timezone })
+      .split(" ");
 
     //   Mapping chart data
     // const x = start[0].replace(/\//g, "-").replace(",", "")
