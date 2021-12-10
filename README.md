@@ -1,6 +1,7 @@
 # Sleep Tracker
-Live Preview </br>
-https://simple-sleep-tracker.herokuapp.com/
+Aplikasi web ini akan memenuhi kebutuhan pengguna dalam melacak pola tidur mereka, termasuk durasi dan waktu.
+Pengguna dapat menambahkan, mengedit, atau menghapus entri tidur apa pun.
+Frontend menggunakan Bootstrap 5 dan Backend menggunakan node.js dan express. Fronent dan Backend berkomunikasi menggunakan REST API
 
 Web Stack
 - Bootstrap 5
