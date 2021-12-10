@@ -1,9 +1,10 @@
 # Sleep Tracker
 Aplikasi web ini akan memenuhi kebutuhan pengguna dalam melacak pola tidur mereka, termasuk durasi dan waktu.
 Pengguna dapat menambahkan, mengedit, atau menghapus entri tidur apa pun.
-Frontend menggunakan Bootstrap 5 dan Backend menggunakan node.js dan express. Fronent dan Backend berkomunikasi menggunakan REST API
+Frontend menggunakan Bootstrap 5 dan Backend menggunakan node.js dan express. Frontend dan Backend berkomunikasi menggunakan REST API.
+Data user disimpan di MongoDB Atlas
 
-Web Stack
+## Web Stack
 - Bootstrap 5
 - Node.js
 - Express
