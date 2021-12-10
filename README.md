@@ -41,6 +41,13 @@ pass: 12345
 ```javascript
 Endpoint : /auth/signup
 Method   : POST
+Request  : {
+    username: "username",
+    email: "alamat email",
+    age: "Umur",
+    password: "password",
+    password-confirmation: "password-confirmation"
+}
 Response : {
     message: "User created",
     userId: "user id"
@@ -51,6 +58,9 @@ Response : {
 ```javascript
 Endpoint : /auth/verify
 Method   : POST
+Request  : {
+    token: "token verifikasi"
+}
 Response : {
     message: "Email verification success"
 }
@@ -60,6 +70,10 @@ Response : {
 ```javascript
 Endpoint : /auth/login
 Method   : POST
+Request  : {
+    email: "alamat email",
+    password: "password"
+}
 Response : {
       token: jwtToken,
       userId: "User id",
@@ -112,7 +126,7 @@ Response : {
 
 #### Request semua sleep entry
 ```javascript
-Endpoint : /sleep/months/:month
+Endpoint : /sleep/history
 Method   : GET
 Response : {
     message: "Successful retrieve all data",
@@ -127,10 +141,25 @@ Response : {
 }
 ```
 
+#### Request user profile
+```javascript
+Endpoint : /sleep/profile
+Method   : GET
+Response : {
+    message: "Profile found!!",
+    username: "user name",
+}
+```
+
 #### Menambahkan sleep entry baru
 ```javascript
 Endpoint : /sleep/entry
 Method   : POST
+Request  : {
+    sleep: "waktu tidur",
+    wakeUp: "waktu bangun",
+    tz: "timezone"
+}
 Response : {
       savedId: "Id sleep entry",
       message: "Entry saved",
@@ -141,6 +170,12 @@ Response : {
 ```javascript
 Endpoint : /sleep/entry
 Method   : PUT
+Request  : {
+    sleep: "waktu tidur",
+    wakeUp: "waktu bangun",
+    tz: "timezone",
+    entryId: "Id entry yang akan diedit"
+}
 Response : {
       savedId: "Id sleep entry",
       message: "Entry edited",
@@ -149,7 +184,7 @@ Response : {
 
 #### Menghapus sleep entry
 ```javascript
-Endpoint : /sleep/entry
+Endpoint : /sleep/entry/:entryId
 Method   : PUT
 Response : {
       message: "Entry deleted",
